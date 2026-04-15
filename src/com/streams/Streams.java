@@ -27,8 +27,80 @@ public class Streams {
 		
 		mapOperations();
 		
+		allAndAnyMatch();
 		
+		partioningBy();
 		
+		reduceMethod();
+		
+		removeDuplicatesFromString();
+		
+		joiningMethod();
+	
+		firstLetterFromEachWord();
+		
+		String str="FRONTLINESMEDIA";
+		Map<Character,Long> map=str.chars()
+		.mapToObj(c->(char)c)
+		.collect(Collectors.groupingBy(c->c,Collectors.counting()));
+		System.out.println(map);
+	}
+
+	private static void firstLetterFromEachWord() {
+		String str="I am A Java Developer Lets Crack It";
+		
+		String[] words = str.split(" ");
+		String result=Arrays.stream(words)
+		.map(c->String.valueOf(c.charAt(0)))
+		.collect(Collectors.joining());
+		
+		System.out.println(result);
+	}
+
+	private static void joiningMethod() {
+		String str="FRONT";
+		String collect = str.chars()
+		.mapToObj(n->String.valueOf((char) n))
+		.collect(Collectors.joining(",","[","]"));
+		System.out.println(collect);
+	}
+
+	private static void removeDuplicatesFromString() {
+		String str="This Is Java Programming";
+		String list = str.chars()
+		.mapToObj(n->String.valueOf((char) n))
+		.distinct()
+		.collect(Collectors.joining(",")); // Collectors.joining only works on Strings
+		
+		System.out.println(list);
+	}
+
+	private static void reduceMethod() {
+		ArrayList<Integer> al=new ArrayList<>(Arrays.asList(12,20,31,41,50,12,50,71));
+		System.out.println(al);
+		Integer sum = al.stream()
+		.reduce(0,(a,b)->a+b);
+		System.out.println(sum);
+	}
+
+	private static void partioningBy() {
+		ArrayList<Integer> al=new ArrayList<>(Arrays.asList(12,20,31,41,50,12,50,71));
+		System.out.println(al);
+		Map<Boolean, List<Integer>> collect = al.stream()
+		.collect(Collectors.partitioningBy(n->n%2==0));
+		System.out.println(collect);
+	}
+
+	private static void allAndAnyMatch() {
+		ArrayList<Integer> al=new ArrayList<>(Arrays.asList(12,20,31,41,50,12,50,71));
+		System.out.println(al);
+		boolean allMatch = al.stream()
+		.allMatch(n->n%2==0);
+		System.out.println(allMatch);
+		
+		boolean anyMatch = al.stream()
+		.anyMatch(n->n%2==0);
+		System.out.println(anyMatch);
 	}
 
 	private static void mapOperations() {
