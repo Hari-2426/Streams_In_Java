@@ -12,10 +12,15 @@ public class Streams {
 		
 		
 		basicStreamIteration();
+		
 		evenNumbers();
+		
 		sortEvenNumbers();
+		
 		desecndingOrder();
+		
 		customClassSorting();
+		
 		mapFunction();
 		
 		removeDuplicates();
@@ -23,6 +28,7 @@ public class Streams {
 		extractingEmployeesWithConditions();
 		
 		largestNumberAndSecondLargestNumber();
+		
 		limitFunction();
 		
 		mapOperations();
@@ -39,6 +45,30 @@ public class Streams {
 	
 		firstLetterFromEachWord();
 		
+		
+		groupingBy();
+		
+		findingHigehestSalarayOfEmployee();
+		
+	}
+
+
+	private static void findingHigehestSalarayOfEmployee() {
+		List<Employee> li = new ArrayList<>();
+		li.add(new Employee(1,"Nandan",50000));
+		li.add(new Employee(2,"Veda",48000));
+		li.add(new Employee(3,"Vyas",49000));
+		li.add(new Employee(4,"Hari",65000));
+
+		Employee emp = li.stream()
+		        .max(Comparator.comparing(Employee::getEmpSal))
+		        .orElse(null);
+
+		System.out.println(emp);
+	}
+	
+
+	private static void groupingBy() {
 		String str="FRONTLINESMEDIA";
 		Map<Character,Long> map=str.chars()
 		.mapToObj(c->(char)c)
